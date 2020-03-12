@@ -10,4 +10,5 @@ Simple example of how to scrape a webpage/website in Node.js via Puppeteer. The 
 - `npm start`
 
 ## Links
-- [Puppeteer API Docs](https://github.com/puppeteer/puppeteer/blob/v2.1.1/docs/api.md)
+- [Puppeteer: Getting Started](https://github.com/puppeteer/puppeteer#getting-started)
+- [Puppeteer: API Docs](https://github.com/puppeteer/puppeteer/blob/v2.1.1/docs/api.md)
