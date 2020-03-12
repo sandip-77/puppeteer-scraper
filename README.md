@@ -8,3 +8,6 @@ Simple example of how to scrape a webpage/website in Node.js via Puppeteer. The 
 - `cd puppeteer-scraper`
 - `npm i`
 - `npm start`
+
+## Links
+- [Puppeteer API Docs](https://github.com/puppeteer/puppeteer/blob/v2.1.1/docs/api.md)
