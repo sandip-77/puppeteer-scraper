@@ -6,8 +6,7 @@ const writeFileSync = require("fs").writeFileSync;
 const Scraper = async (browser, page) => {
   const url = "https://www.dotabuff.com/procircuit/team-standings";
 
-  await page.goto(url);
-  await page.waitFor(2500);
+  await page.goto(url, { waitUntil: "domcontentloaded" });
 
   const standings = await page.evaluate(() =>
     Array.from(document.querySelectorAll("tbody > tr")).map(team => [
