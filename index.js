@@ -1,8 +1,9 @@
 const puppeteer = require("puppeteer");
-const Scraper = require("./scrapers/class-based");
+const Standings = require("./scrapers/standings");
+const Email = require("./utils/email");
 
 /**
- * Run Scraper
+ * Run Standings
  */
 (async () => {
   let browser;
@@ -15,9 +16,17 @@ const Scraper = require("./scrapers/class-based");
 
     page = await browser.newPage();
 
-    await new Scraper(browser, page).main();
+    const standings = await new Standings(browser, page).main();
+
+    await Email.send(
+      `<ul style="list-style:none;">
+        ${standings.map(
+          ([team, points], i) => `<li>${i + 1}: ${team} ${points}</li>`
+        )}
+      </ul>`.replace(/\,/g, "")
+    );
   } catch (error) {
-    console.log(error.stack || error);
+    await Email.send(error.stack, true);
   }
 
   await browser.close();

@@ -1,9 +1,9 @@
 const writeFileSync = require("fs").writeFileSync;
 
 /**
- * @class Scraper
+ * @class Standings
  */
-module.exports = class Scraper {
+module.exports = class Standings {
   /**
    * @constructor
    */
@@ -29,6 +29,7 @@ module.exports = class Scraper {
     );
 
     this.writeToJson();
+    return this.standings;
   }
 
   /**

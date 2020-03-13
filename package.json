@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node utils/scheduler.js"
+    "start": "node index.js",
+    "schedule": "node utils/schedule.js"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const user = "";
+const user = "dztheman14@gmail.com";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -16,13 +16,17 @@ class Email {
   /**
    * @method send
    */
-  static send(msg, error = false) {
-    return transporter.sendMail({
+  static async send(msg, error = false) {
+    console.log(`Sending email ${error ? "error alert" : "alert"}...`);
+
+    transporter.sendMail({
       to: user,
       from: user,
       subject: error ? "Scraper Error" : "Scraper Results",
-      html: error ? `<p>${msg}</p>` : msg
+      html: msg
     });
+
+    console.log(`Alert sent successfully.`);
   }
 }
 
