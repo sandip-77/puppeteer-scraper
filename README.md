@@ -17,3 +17,5 @@ If you are here from YouTube, you can checkout the snapshot of the code when we 
 
 - [Puppeteer: Getting Started](https://github.com/puppeteer/puppeteer#getting-started)
 - [Puppeteer: API Docs](https://github.com/puppeteer/puppeteer/blob/v2.1.1/docs/api.md)
+- [Nodemailer](https://nodemailer.com/about/)
+- [Node Schedule](https://github.com/node-schedule/node-schedule)
