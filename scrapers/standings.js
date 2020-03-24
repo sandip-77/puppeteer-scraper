@@ -20,12 +20,19 @@ module.exports = class Standings {
    */
   async main() {
     await this.page.goto(this.url, { waitUntil: "domcontentloaded" });
+    await this.page.waitFor(2000);
 
+    // Decided to add more data for fun. Notice how I also refactored to cut down on some boilerplate
+    // by adding a reusable function inside of the map statement.
     this.standings = await this.page.evaluate(() =>
-      Array.from(document.querySelectorAll("tbody > tr")).map(team => [
-        team.querySelector("td:nth-child(2)").getAttribute("data-value"),
-        team.querySelector("td:nth-child(3)").getAttribute("data-value")
-      ])
+      Array.from(document.querySelectorAll("tbody > tr")).map(team => {
+        const getData = child =>
+          team
+            .querySelector(`td:nth-child(${child})`)
+            .getAttribute("data-value");
+
+        return [getData(2), getData(3), getData(4), getData(5), getData(7)];
+      })
     );
 
     this.writeToJson();
