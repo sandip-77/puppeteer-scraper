@@ -12,7 +12,7 @@ module.exports = class Standings {
     this.page = page;
 
     this.standings = [];
-    this.url = "https://www.dotabuff.com/procircuit/team-standings";
+    this.url = "https://aziende.tuttosuitalia.com/lazio/roma/affile/";
   }
 
   /**
@@ -25,13 +25,14 @@ module.exports = class Standings {
     // Decided to add more data for fun. Notice how I also refactored to cut down on some boilerplate
     // by adding a reusable function inside of the map statement.
     this.standings = await this.page.evaluate(() =>
-      Array.from(document.querySelectorAll("tbody > tr")).map(team => {
+      Array.from(document.getElementsByClassName("card-body")).map(team => {
         const getData = child =>
           team
-            .querySelector(`td:nth-child(${child})`)
-            .getAttribute("data-value");
+            .querySelector(`h6`).textContent
+            // .querySelector(`p:nth-child(${child}) > span:nth-child(1)`).textContent
+            // .getAttribute("data-value");
 
-        return [getData(2), getData(3), getData(4), getData(5), getData(7)];
+        return [getData(1), getData(2), getData(3), getData(4)];
       })
     );
 
